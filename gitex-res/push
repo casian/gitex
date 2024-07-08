@@ -1,0 +1,13 @@
+#!/bin/bash
+# Author: IAN CASSAR
+COMMIT_COMMENT=$(git show -s --format=%s)
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD) 
+
+git push origin :$BRANCH_NAME
+echo "DELETE"
+
+git commit -m $COMMIT_COMMENT
+echo "COMMIT LOCAL"
+
+git push -u origin $BRANCH_NAME
+echo "PUSH"

@@ -1,0 +1,24 @@
+#!/bin/bash
+# Author: IAN CASSAR
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+case "$1" in
+  rebase)
+    # Your rebase logic here
+    $SCRIPT_DIR/gitex-res/rebase $2
+    ;;
+  squash)
+    # Your squash logic here
+    $SCRIPT_DIR/gitex-res/squash $2
+    ;;
+  push)
+    $SCRIPT_DIR/gitex-res/push
+    ;;
+  copy)
+    git branch --show-current | pbcopy
+    ;;
+  *)
+    echo "Invalid argument. Usage: $0 {rebase|push|squash|Copy}"
+    exit 1
+    ;;
+esac
